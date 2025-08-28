@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef, createContext, useContext } from 'react';
 
 // API Base URL - Yeh aapke Hostinger server ka URL hoga
-// Abhi testing ke liye, yeh hamare local Node.js server par point kar raha hai
 const API_URL = 'http://localhost:3001';
 
 // ===================================
@@ -24,7 +23,7 @@ const api = {
         });
         return res.json();
     },
-    // Baaki API calls (jaise get products, etc.) yahan add honge
+    // Baaki API calls yahan add honge
 };
 
 // ===================================
@@ -37,7 +36,6 @@ export const AuthProvider = ({ children }) => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        // App load hone par token check karein
         const token = localStorage.getItem('token');
         const userData = localStorage.getItem('user');
         if (token && userData) {
@@ -68,7 +66,7 @@ export const useAuth = () => {
 };
 
 
-// SVG Icons (Lucide React)
+// SVG Icons
 const HomeIcon = (props) => (
   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" /><polyline points="9 22 9 12 15 12 15 22" /></svg>
 );
@@ -102,14 +100,8 @@ const LogOutIcon = (props) => (
 const SettingsIcon = (props) => (
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 0 2l-.15.08a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l-.22-.38a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1 0-2l.15-.08a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z" /><circle cx="12" cy="12" r="3" /></svg>
 );
-const LayoutDashboardIcon = (props) => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}><rect x="3" y="3" width="7" height="9" /><rect x="14" y="3" width="7" height="5" /><rect x="14" y="12" width="7" height="9" /><rect x="3" y="16" width="7" height="5" /></svg>
-);
 const PackageIcon = (props) => (
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}><path d="M16.5 9.4a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0z" /><path d="M12 14.1a7.5 7.5 0 0 1-7.5-7.5c0-.6.1-1.1.2-1.6" /><path d="M12 14.1a7.5 7.5 0 0 0 7.5-7.5c0-.6-.1-1.1-.2-1.6" /><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" /></svg>
-);
-const MegaphoneIcon = (props) => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}><path d="m3 11 18-5v12L3 14v-3z" /><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6" /></svg>
 );
 const BrushIcon = (props) => (
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}><path d="m9.06 11.9 8.07-8.06a2.85 2.85 0 1 1 4.03 4.03l-8.06 8.08" /><path d="M7.07 14.94c-1.66 0-3 1.35-3 3.02 0 1.33-2.5 1.52-2 2.02 1.08 1.1 2.49 2.02 4 2.02 2.2 0 4-1.8 4-4.04a3.01 3.01 0 0 0-3-3.02z" /></svg>
@@ -120,26 +112,8 @@ const MapPinIcon = (props) => (
 const PhoneIcon = (props) => (
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" /></svg>
 );
-const PlusCircleIcon = (props) => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}><circle cx="12" cy="12" r="10" /><line x1="12" y1="8" x2="12" y2="16" /><line x1="8" y1="12" x2="16" y2="12" /></svg>
-);
-const CheckCircleIcon = (props) => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" /><polyline points="22 4 12 14.01 9 11.01" /></svg>
-);
-const XCircleIcon = (props) => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}><circle cx="12" cy="12" r="10" /><line x1="15" y1="9" x2="9" y2="15" /><line x1="9" y1="9" x2="15" y2="15" /></svg>
-);
-const UserCheck = (props) => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><polyline points="16 11 18 13 22 9"/></svg>
-);
 const UserCog = (props) => (
   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}><circle cx="18" cy="15" r="3"/><circle cx="9" cy="7" r="4"/><path d="M10 15H6a4 4 0 0 0-4 4v2"/><path d="m21.7 16.4-.9-.3"/><path d="m15.2 13.9-.9-.3"/><path d="m16.6 18.7.3-.9"/><path d="m19.1 12.2.3-.9"/><path d="m19.6 17.6-.4-1"/><path d="m14.3 15.6-.4-1"/><path d="m20.9 14.3-1-.4"/><path d="m14.8 16.8-1-.4"/></svg>
-);
-const FileText = (props) => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><line x1="10" y1="9" x2="8" y2="9"/></svg>
-);
-const MessageSquare = (props) => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
 );
 
 
@@ -197,7 +171,8 @@ const Notification = ({ message, type, onDismiss }) => {
 };
 
 // Main Application Components
-const Header = ({ onPageChange, user, onLogout, onAuthModalOpen, onAdminPanelOpen, onEditModeToggle, isEditMode }) => {
+const Header = ({ onPageChange, onLogout, onAuthModalOpen }) => {
+    const { user } = useAuth();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const dropdownRef = useRef(null);
@@ -245,8 +220,6 @@ const Header = ({ onPageChange, user, onLogout, onAuthModalOpen, onAdminPanelOpe
                                         </div>
                                         <div className="py-1">
                                             <a href="#" onClick={(e) => {e.preventDefault(); onPageChange('profile'); setIsDropdownOpen(false);}} className="flex items-center gap-3 px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"><UserCog className="w-4 h-4" /> My Profile</a>
-                                            {['admin', 'superadmin'].includes(user.role) && <a href="#" onClick={(e) => {e.preventDefault(); onAdminPanelOpen(); setIsDropdownOpen(false);}} className="flex items-center gap-3 px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"><SettingsIcon className="w-4 h-4" /> Admin Panel</a>}
-                                            {user.role === 'superadmin' && <a href="#" onClick={(e) => {e.preventDefault(); onEditModeToggle(); setIsDropdownOpen(false);}} className="flex items-center gap-3 px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"><BrushIcon className="w-4 h-4" /> {isEditMode ? "Disable Edit Mode" : "Enable Edit Mode"}</a>}
                                         </div>
                                         <div className="border-t py-1">
                                             <a href="#" onClick={(e) => {e.preventDefault(); onLogout(); setIsDropdownOpen(false);}} className="flex items-center gap-3 px-4 py-2 text-sm text-red-600 hover:bg-red-50"><LogOutIcon className="w-4 h-4" /> Logout</a>
@@ -281,80 +254,37 @@ const Header = ({ onPageChange, user, onLogout, onAuthModalOpen, onAdminPanelOpe
     );
 };
 
-// Editable Content Component for Superadmin
-const Editable = ({ contentKey, isEditMode, children, as: Component = 'div' }) => {
-    const [text, setText] = useState(children);
-
-    useEffect(() => {
-        // This component is now a placeholder as content is managed by Node.js backend
-        // In a real scenario, you'd fetch this from your Node.js API
-        setText(children);
-    }, [children]);
-
-    const handleBlur = async (e) => {
-        const newText = e.target.innerText;
-        // In a real scenario, you'd send this to your Node.js API to save
-        console.log(`Saving content for ${contentKey}: ${newText}`);
-    };
-
-    return (
-        <Component
-            contentEditable={isEditMode}
-            suppressContentEditableWarning={true}
-            onBlur={handleBlur}
-            className={isEditMode ? "outline-2 outline-dashed outline-yellow-500 p-1 rounded" : ""}
-        >
-            {text}
-        </Component>
-    );
-};
-
-
-const HomePage = ({ onPageChange, isEditMode }) => {
-    const [latestProducts, setLatestProducts] = useState([]);
-
-    useEffect(() => {
-        // This would fetch from your Node.js API
-    }, []);
-
-    return (
-        <div className="animate-fade-in">
-            <section className="bg-gradient-to-br from-[#0F5132] to-[#1a5c3a] text-white pt-32 pb-20 text-center">
-                <div className="container mx-auto px-4">
-                    <h1 className="text-4xl md:text-6xl font-bold mb-4 animate-slide-in-up">
-                        <Editable contentKey="heroTitle" isEditMode={isEditMode} as="span">Welcome to JMCCI</Editable>
-                    </h1>
-                    <p className="text-lg md:text-xl mb-2 text-white/90">
-                       <Editable contentKey="heroSubtitleEn" isEditMode={isEditMode} as="span">Jabalpur Muslim Chamber of Commerce & Industries</Editable>
-                    </p>
-                    <p className="text-xl md:text-2xl mb-8 text-[#B8860B] font-['Noto_Nastaliq_Urdu']">
-                        <Editable contentKey="heroSubtitleUr" isEditMode={isEditMode} as="span">خود کفیل سماج، خوشحال بھارت</Editable>
-                    </p>
-                    <div className="flex justify-center gap-4 mb-12">
-                        <button onClick={() => onPageChange('marketplace')} className="bg-[#B8860B] hover:bg-[#a0740a] text-white font-bold py-3 px-8 rounded-lg transition-transform hover:scale-105">Explore Marketplace</button>
-                        <button onClick={() => onPageChange('about')} className="bg-transparent border-2 border-white hover:bg-white hover:text-[#0F5132] text-white font-bold py-3 px-8 rounded-lg transition-colors">Learn More</button>
-                    </div>
-                    <div className="flex flex-wrap justify-center gap-4 md:gap-8">
-                        <StatCounter target={532} label="Active Members" />
-                        <StatCounter target={29} label="Years of Service" />
-                        <StatCounter target={1247} label="Businesses Supported" />
-                    </div>
+const HomePage = ({ onPageChange }) => (
+    <div className="animate-fade-in">
+        <section className="bg-gradient-to-br from-[#0F5132] to-[#1a5c3a] text-white pt-32 pb-20 text-center">
+            <div className="container mx-auto px-4">
+                <h1 className="text-4xl md:text-6xl font-bold mb-4 animate-slide-in-up">Welcome to JMCCI</h1>
+                <p className="text-lg md:text-xl mb-2 text-white/90">Jabalpur Muslim Chamber of Commerce & Industries</p>
+                <p className="text-xl md:text-2xl mb-8 text-[#B8860B] font-['Noto_Nastaliq_Urdu']">خود کفیل سماج، خوشحال بھارت</p>
+                <div className="flex justify-center gap-4 mb-12">
+                    <button onClick={() => onPageChange('marketplace')} className="bg-[#B8860B] hover:bg-[#a0740a] text-white font-bold py-3 px-8 rounded-lg transition-transform hover:scale-105">Explore Marketplace</button>
+                    <button onClick={() => onPageChange('about')} className="bg-transparent border-2 border-white hover:bg-white hover:text-[#0F5132] text-white font-bold py-3 px-8 rounded-lg transition-colors">Learn More</button>
                 </div>
-            </section>
-            <section className="py-20 bg-gray-50">
-                <div className="container mx-auto px-4">
-                    <div className="flex justify-between items-center mb-12">
-                        <h2 className="text-3xl font-bold text-[#0F5132]">Latest Products</h2>
-                        <button onClick={() => onPageChange('marketplace')} className="text-[#0F5132] font-semibold hover:text-[#B8860B]">View All &rarr;</button>
-                    </div>
-                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        {/* Latest products would be mapped here */}
-                    </div>
+                <div className="flex flex-wrap justify-center gap-4 md:gap-8">
+                    <StatCounter target={532} label="Active Members" />
+                    <StatCounter target={29} label="Years of Service" />
+                    <StatCounter target={1247} label="Businesses Supported" />
                 </div>
-            </section>
-        </div>
-    );
-};
+            </div>
+        </section>
+        <section className="py-20 bg-gray-50">
+            <div className="container mx-auto px-4">
+                <div className="flex justify-between items-center mb-12">
+                    <h2 className="text-3xl font-bold text-[#0F5132]">Latest Products</h2>
+                    <button onClick={() => onPageChange('marketplace')} className="text-[#0F5132] font-semibold hover:text-[#B8860B]">View All &rarr;</button>
+                </div>
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    {/* Yahan products aayenge */}
+                </div>
+            </div>
+        </section>
+    </div>
+);
 
 const Footer = ({ onPageChange }) => (
     <footer className="bg-[#0F5132] text-white">
@@ -386,10 +316,11 @@ const Footer = ({ onPageChange }) => (
 );
 
 const AuthModal = ({ isOpen, onClose, authType, onSwitch, onLogin, onRegister, error }) => {
-    if (!isOpen) return null;
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+
+    if (!isOpen) return null;
 
     const handleLoginSubmit = async (e) => {
         e.preventDefault();
